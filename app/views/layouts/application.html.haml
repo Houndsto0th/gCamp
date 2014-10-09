@@ -7,75 +7,10 @@
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
     %link{:href => "../../favicon.ico", :rel => "icon"}/
-    %title Jumbotron Template for Bootstrap
+    %title gCamp
     = stylesheet_link_tag 'application'
-    = yield
-    / Bootstrap core CSS
-    %link{:href => "../../dist/css/bootstrap.min.css", :rel => "stylesheet"}/
-    / Custom styles for this template
-    %link{:href => "jumbotron.css", :rel => "stylesheet"}/
-    / Just for debugging purposes. Don't actually copy these 2 lines!
-    /[if lt IE 9] <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
-    %script{:src => "../../assets/js/ie-emulation-modes-warning.js"}
-    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
-    /[if lt IE 9]
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
   %body
-    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
-      .container
-        .navbar-header
-          %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{:href => "#"} gCamp
-        / /.navbar-collapse
-    / Main jumbotron for a primary marketing message or call to action
-    .jumbotron
-      .container
-        .panel.panel-default
-          .panel-body
-            %h1 gCamp
-            %p Your Life, Organized.
-      .container
-        / Example row of columns
-        .row
-          .col-md-4
-            = image_tag("blocks.jpg", class: "img-responsive")
-            .panel.panel-default
-              .panel-heading
-                %h3.panel-title Tasks
-              .panel-body
-                %p Grouped by projects and lists. Just the way you like 'em
-          .col-md-4
-            = image_tag("blurredwater.jpg", class: "img-responsive")
-            .panel.panel-default
-              .panel-heading
-                %h3.panel-title Documents
-              .panel-body
-                %ul
-                  %li Upload
-                  %li Comment
-                  %li Revise
-          .col-md-4
-            = image_tag("split.jpg", class: "img-responsive")
-            .panel.panel-default
-              .panel-heading
-                %h3.panel-title Comments
-              .panel-body
-                %ul
-                  %li Comment on tasks and documents
-                  %li Get email notification
-          %hr/
-          %footer
-        / /container
-        /
-          Bootstrap core JavaScript
-          \==================================================
-        / Placed at the end of the document so the pages load faster
-        %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"}
-        %script{:src => "../../dist/js/bootstrap.min.js"}
-        / IE10 viewport hack for Surface/desktop Windows 8 bug
-        %script{:src => "../../assets/js/ie10-viewport-bug-workaround.js"}
+    = yield
+
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"}
