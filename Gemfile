@@ -1,4 +1,11 @@
 source 'https://rubygems.org'
+
+group :production do
+  gem "pg"
+  gem "rails_12factor"
+end
+
+
 # loads Haml
 gem "haml"
 # Autoprefixer recommended by Bootstrap -Hndth
