@@ -16,15 +16,16 @@
  *= require_self
  */
 body {
-  background-image: image-url('mountaintop.jpg');
+  background-image: image-url('DALeast.jpg');
   background-size: cover;
   background-position: fixed;
 }
 
 .jumbotron {
-  opacity: 0.75;
+  opacity: 0.95;
 }
 
 .img-responsive {
   padding-bottom: 15px;
+  opacity: .75;
 }
