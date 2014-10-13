@@ -1,0 +1,12 @@
+.container-one
+  .h1{style: 'padding: 20px'} About
+  .p Get organized and increase productivity with your team
+  = image_tag('meeting.png', style: 'margin: auto; padding: 25px')
+
+.container
+  %footer
+    %hr.style-one
+    .p{style: 'padding-bottom: 15px'}
+      = link_to 'About', about_path,
+      |
+      = link_to 'Terms', terms_path,
