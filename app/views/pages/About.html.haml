@@ -5,8 +5,8 @@
 
 .container
   %footer
-    %hr.style-one
-    .p{style: 'padding-bottom: 15px'}
-      = link_to 'About', about_path,
-      |
-      = link_to 'Terms', terms_path,
+  %hr.style-one
+  .p
+    = link_to_unless_current("about", about_path)
+    |
+    = link_to_unless_current("terms", terms_path)
