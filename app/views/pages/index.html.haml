@@ -34,24 +34,23 @@
             %li Get email notification
 
   /quotes
-  - authors_and_quotes = [ ["Walt Whitman", "Simplicity is the glory of expression."],
-    ["Walt Whitman", "Be curious, not judgemental."],
-    ["Tyler Durden", "It's only after we've lost everything that we're free to do anything."],
-    ["Tyler Durden", "The things you own end up owning you"],
-    ["Andy Warhol", "They always say time changes things, but you actually have to change them yourself."],
-    ["Andy Warhol", "Art is what you can get away with."],
-    ["Louis Carroll 'Alice in Wonderland'", "But I don't want to go among mad people."],
-    ["Louis Carroll 'Alice in Wonderland'", "Why, sometimes I've believed as many as six impossible things before breakfast"]]
+  - authors_and_quotes = [ ["Walt Whitman",["Simplicity is the glory of expression.", "Be curious, not judgemental."]],
+    ["Tyler Durden", ["It's only after we've lost everything that we're free to do anything.", "The things you own end up owning you"]],
+    ["Andy Warhol", ["They always say time changes things, but you actually have to change them yourself.", "Art is what you can get away with."]],
+    ["Louis Carroll", ["But I don't want to go among mad people.", "Why, sometimes I've believed as many as six impossible things before breakfast"]]]
 
   - authors_and_quotes.sample(3).each do |author_quote|
-    %p.lead= author_quote[1]
-    %p= author_quote[0]
+
+    %p.lead
+      = author_quote[1].sample
+      %p= author_quote[0]
 
 
-
-%footer
-  %hr.style-one
-  .p
-    = link_to_unless_current("about", about_path)
-    |
-    = link_to_unless_current("terms", terms_path)
+  %footer{style: "padding-bottom:25px;"}
+    %hr.style-one
+    .p
+      = link_to_unless_current("About", about_path)
+      |
+      = link_to_unless_current("Terms", terms_path)
+      |
+      = link_to_unless_current("FAQ", faq_path)
