@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "pages#index.html.haml"
+  root "pages#index"
   get "About" => "pages#About", as: :about
   get "Terms" => "pages#Terms", as: :terms
   get "F.A.Q." => "pages#FAQ", as: :faq

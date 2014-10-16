@@ -36,8 +36,8 @@
   - @authors_and_quotes.sample(3).each do |author_quote|
 
     %p.lead
-      = author_quote[1].sample
-      %p= author_quote[0]
+      = author_quote.quotes.sample
+      %p= author_quote.author
 
   %footer{style: "padding-bottom:25px;"}
     %hr.style-one
