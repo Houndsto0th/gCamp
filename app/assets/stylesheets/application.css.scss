@@ -15,6 +15,10 @@
  *= require_tree .
  *= require_self
  */
+ .body {
+   margin-top: 75px;
+ }
+
 .navbar {
   background-color: #595654;
 }
@@ -25,7 +29,6 @@
 
 .jumbotron {
   opacity: 0.95;
-  margin: 75px;
 }
 
 .img-responsive {

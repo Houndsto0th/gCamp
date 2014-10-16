@@ -1,7 +1,19 @@
-%h1 Editing task
+.container
+  %h1 Editing task
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Show', @task
-\|
-= link_to 'Back', tasks_path
+  = link_to 'Show', @task
+  \|
+  = link_to 'Back', tasks_path
+
+  %footer{style: "padding-bottom:25px;"}
+    %hr.style-one
+    .p
+      = link_to_unless_current("About", about_path)
+      |
+      = link_to_unless_current("Terms", terms_path)
+      |
+      = link_to_unless_current("FAQ", faq_path)
+      |
+      = link_to_unless_current("Tasks", tasks_path)
