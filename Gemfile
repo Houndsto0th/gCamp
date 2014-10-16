@@ -7,7 +7,7 @@ end
 
 
 # loads Haml
-gem "haml"
+gem "haml-rails", '~>0.5.3'
 # Autoprefixer recommended by Bootstrap -Hndth
 gem 'autoprefixer-rails'
 # Required by Bootstrap -Hndth
