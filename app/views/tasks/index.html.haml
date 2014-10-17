@@ -1,7 +1,7 @@
 .container
   %h1 Listing tasks
 
-  %table
+  %table.table
     %tr
       %th Description
       %th
@@ -11,9 +11,12 @@
     - @tasks.each do |task|
       %tr
         %td= task.description
-        %td= link_to 'Show', task
-        %td= link_to 'Edit', edit_task_path(task)
-        %td= link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %btn.btn
+          %td= link_to 'Show', task
+
+          %td= link_to 'Edit', edit_task_path(task)
+
+          %td= link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   %br
 
