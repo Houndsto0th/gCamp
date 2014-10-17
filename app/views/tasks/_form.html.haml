@@ -1,13 +1,14 @@
-= form_for @task do |f|
+= form_for(@task, html:{class: "form-horizontal"}) do |f|
   - if @task.errors.any?
     #error_explanation
       %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
       %ul
         - @task.errors.full_messages.each do |msg|
           %li= msg
-
-  .field{style: 'form-horizontal'}
-    = f.label :description
-    = f.text_field :description
-  .actions.btn.btn-primary
-    = f.submit 'Create Task'
+  %div.form-group
+    = f.label :description, class: "col-sm-1 control-label"
+    %div.col-sm-10
+      = f.text_field :description, class: "form-control"
+  %div.form-group
+    %div.col-sm-offset-1.col-sm-10
+      = f.submit 'Create Task', class:"btn btn-primary"
