@@ -7,8 +7,8 @@
           %li= msg
   %div.form-group
     = f.label :description, class: "col-sm-1 control-label"
-    %div.col-sm-10
+    %div.col-sm-6
       = f.text_field :description, class: "form-control"
-  %div.form-group
+  .actions.form-group
     %div.col-sm-offset-1.col-sm-10
-      = f.submit 'Create Task', class:"btn btn-primary"
+      = f.submit class:"btn btn-primary"
