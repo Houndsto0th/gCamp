@@ -5,10 +5,15 @@
       %ul
         - @task.errors.full_messages.each do |msg|
           %li= msg
-  %div.form-group
+  .form-group
     = f.label :description, class: "col-sm-1 control-label"
-    %div.col-sm-6
+    .col-sm-6
       = f.text_field :description, class: "form-control"
+  - if @task.id
+    .form-group
+      .col-sm-offset-1.col-sm-10
+        = f.check_box :complete
+        =f.label :complete
   .actions.form-group
-    %div.col-sm-offset-1.col-sm-10
+    .col-sm-offset-1.col-sm-10
       = f.submit class:"btn btn-primary"
