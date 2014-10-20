@@ -6,6 +6,4 @@ class Quote
     self.quotes = quotes
   end
 
-
-
 end

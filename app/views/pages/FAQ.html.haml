@@ -1,7 +1,8 @@
 .container
 
-
-
+  - @frequently_asked_questions.each do |asked|
+    %h1= asked.questions
+    %p= asked.answers
 
   %footer{style: "padding-bottom:25px;"}
     %hr.style-one
