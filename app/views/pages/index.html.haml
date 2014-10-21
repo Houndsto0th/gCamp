@@ -1,7 +1,7 @@
 
 / Main jumbotron for a primary marketing message or call to action
 .container
-  .jumbotron
+  .jumbotron{style: "text-align: center"}
     %h1 gCamp
     %p Your Life, Organized.
 .container
@@ -35,8 +35,8 @@
 
   - @authors_and_quotes.sample(3).each do |author_quote|
 
-    %p.lead
-      = author_quote.quotes.sample
-      %p= author_quote.author
-
-  
+    .quote
+      %p.lead{style: "padding: 10px"}
+        = author_quote.quotes.sample
+        |
+        = author_quote.author
