@@ -12,6 +12,8 @@
     = csrf_meta_tags
     = javascript_include_tag "application"
 
+  -if current_page?("/")
+    %body.homepage
 
   %body{style: "margin-top: 75px"}
     .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
