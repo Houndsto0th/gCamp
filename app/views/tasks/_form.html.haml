@@ -11,17 +11,17 @@
     .col-sm-6
       = f.text_field :description, class: "form-control"
 
+  .form-group
+    = f.label :"Due Date", class: "col-sm-1"
+    .col-sm-2
+      = f.date_field :due_date, class: "form-control"
+
   - if @task.id
     .form-group
       .col-sm-offset-1.col-sm-10
         =f.check_box :complete
         =f.label :complete
 
-
-  .form-group
-    .col-sm-offset-1.col-sm-10
-      = f.date_field :due_date
-      = f.label :"Due Date"
 
   .actions.form-group
     .col-sm-offset-1.col-sm-10

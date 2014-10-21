@@ -4,9 +4,10 @@
   %p
     %b Description:
     = @task.description
+  %p
+    %b Due Date:
+    = @task.due_date
 
   = link_to 'Edit', edit_task_path(@task)
   \|
   = link_to 'Back', tasks_path
-
-  
