@@ -14,7 +14,7 @@
         %h5 Due Date
       %th
 
-    - @tasks.sort_by{|task| task.due_date}.each do |task|
+    - @tasks.each do |task|
       %tr
         %td= task.description
         %td= task.complete
