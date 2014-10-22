@@ -1,4 +1,6 @@
 .container
+  - unless notice.nil?
+    .alert.alert-success= notice
   .page-header
     .h1
       Tasks
