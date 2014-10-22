@@ -36,7 +36,8 @@
   - @authors_and_quotes.sample(3).each do |author_quote|
 
     .quote
-      %p.lead{style: "padding: 10px"}
+      %span.lead{style: "padding: 5px"}
         = author_quote.quotes.sample
         |
+      %span
         = author_quote.author
