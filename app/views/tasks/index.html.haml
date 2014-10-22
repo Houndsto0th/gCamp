@@ -17,7 +17,7 @@
       %th
 
     - @tasks.each do |task|
-      %tr{class: ("danger" if task.due_date <= Date.today+7)}
+      %tr{class: ("danger" if task.isdue == true)}
         %td= task.description
         %td= task.complete
         %td= task.due_date
