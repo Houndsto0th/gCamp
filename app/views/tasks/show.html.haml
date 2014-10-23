@@ -5,7 +5,8 @@
     = @task.description
   %p
     %b Due Date:
-    = @task.due_date
+    - if @task.due_date
+      = @task.due_date.strftime("%m/%d/%Y")
 
   %p
     %b Complete?
