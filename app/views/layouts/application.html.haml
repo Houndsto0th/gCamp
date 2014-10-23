@@ -26,6 +26,9 @@
             %span.icon-bar
           %a.navbar-brand{:href => root_path} gCamp
           / /.navbar-collapse`
+    .container
+      - unless notice.nil?
+        .alert.alert-success= notice
     = yield
 
   .container

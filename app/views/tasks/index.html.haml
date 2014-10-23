@@ -1,6 +1,4 @@
 .container
-  - unless notice.nil?
-    .alert.alert-success= notice
   .page-header
     .h1
       Tasks
@@ -20,7 +18,9 @@
       %tr{class: ("danger" if task.isdue == true)}
         %td= task.description
         %td= task.complete
-        %td= task.due_date
+        %td
+          - if task.due_date
+            = task.due_date.strftime("%m/%d/%y")
         %td
           .btn-toolbar.pull-right
             .btn-group
@@ -32,5 +32,7 @@
             .btn-group
               = link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-warning pull-right"
 
+            .btn-group
+              .btn.btn-md.glyphicon.glyphicon-check
   %hr
   %br
