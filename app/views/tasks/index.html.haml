@@ -3,6 +3,9 @@
     Tasks
     = link_to 'New Task', new_task_path, class: "btn btn-info pull-right"
 .container
+  = link_to 'All Tasks', tasks_path(show_complete: "show complete")
+  |
+  = link_to 'Incomplete Tasks', tasks_path
   %table.table
     %tr
       %th
