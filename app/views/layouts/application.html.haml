@@ -6,7 +6,6 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
-    %link{:href => "../../favicon.ico", :rel => "icon"}/
     %title gCamp
     = stylesheet_link_tag 'application'
     = csrf_meta_tags
@@ -42,3 +41,15 @@
         = link_to_unless_current("faq", faq_path)
         |
         = link_to_unless_current("tasks", tasks_path)
+      .pull-right
+        = link_to "https://www.linkedin.com/profile/view?id=250805495&trk=nav_responsive_tab_profile_pic" do
+          =image_tag("linkedin.png", width: "20em")
+        |
+        = link_to "https://twitter.com/Houndsto0th" do
+          =image_tag("twitter.png", width: "20em")
+        |
+        = link_to "https://github.com/Houndsto0th" do
+          =image_tag("github.png", width: "20em")
+        |
+        = link_to "galvanize.it" do
+          =image_tag("gschooldark.svg", width: "40em")
