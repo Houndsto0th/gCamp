@@ -1,0 +1,20 @@
+.container
+  .h1
+    Tasks
+    =link_to 'New User', new_user_path, class: "btn btn-info pull-right"
+  %table.table
+    %tr
+      %th
+        %h5 First Name
+      %th
+        %h5 Last Name
+      %th
+        %h5 Email
+
+    -@users.each do |user|
+      %tr
+        %td= user.first_name
+
+        %td= user.last_name
+
+        %td= user.email
