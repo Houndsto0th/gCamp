@@ -5,16 +5,16 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     if params[:show_complete]
-      @tasks = Task.order("due_date").all
+      @tasks = Task.order(params[:sort_by]).all
     else
-      @tasks = Task.where(complete: false)
+      @tasks = Task.where(complete: false).order(params[:sort_by])
     end
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    
+
   end
 
   # GET /tasks/new
