@@ -16,7 +16,9 @@
  *= require_self
  */
 
- 
+.form-horizontal .control-label {
+  text-align: left;
+}
 
 .homepage {
   background-image: image-url("doll.jpg");

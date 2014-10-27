@@ -3,24 +3,30 @@
     Tasks
     = link_to 'New Task', new_task_path, class: "btn btn-info pull-right"
 .container
-  = link_to 'All Tasks', tasks_path(show_complete: "show complete")
+  = link_to_unless params[:show_complete], 'All Tasks', tasks_path(show_complete: "show complete")
   |
-  = link_to 'Incomplete Tasks', tasks_path
+  = link_to_if params[:show_complete], 'Incomplete Tasks', tasks_path
   %table.table
     %tr
-      %th
+      %th{style: "text-align: center;"}
         %h5 Description
-      %th
+      %th{style: "text-align: center;"}
         %h5 Complete?
-      %th
+      %th{style: "text-align: center;"}
         %h5 Due Date
       %th
 
     - @tasks.each do |task|
       %tr{class: ("danger" if task.isdue == true)}
         %td= task.description
-        %td= task.complete
-        %td
+        -if task.complete == true
+          %td{style: "text-align: center;"}
+            .btn.btn-md.glyphicon.glyphicon-check
+        -if task.complete == false
+          %td{style: "text-align: center;"}
+            .btn.btn-md.glyphicon.glyphicon-unchecked
+
+        %td{style: "text-align: center;"}
           - if task.due_date
             = task.due_date.strftime("%m/%d/%Y")
         %td
@@ -33,8 +39,5 @@
 
             .btn-group
               = link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-warning pull-right"
-
-            .btn-group
-              .btn.btn-md.glyphicon.glyphicon-check
   %hr
   %br

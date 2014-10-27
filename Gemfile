@@ -4,6 +4,7 @@ group :production do
   gem "rails_12factor"
 end
 
+gem 'faker', group: :development
 # postgresql
 gem "pg"
 # loads Haml
