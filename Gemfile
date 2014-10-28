@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 group :production do
   gem "rails_12factor"
 end
-
-gem 'faker', group: :development
+#faker generates random data to produce 'chewy' data sets
+gem 'faker'
 # postgresql
 gem "pg"
 # loads Haml

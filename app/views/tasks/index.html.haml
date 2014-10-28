@@ -3,19 +3,20 @@
     Tasks
     = link_to 'New Task', new_task_path, class: "btn btn-info pull-right"
 .container
-  = link_to_unless params[:show_complete], 'All Tasks', tasks_path(show_complete: "show complete")
-  |
-  = link_to_if params[:show_complete], 'Incomplete Tasks', tasks_path
+  .pull-right
+    = link_to_unless params[:show_complete], 'All Tasks', tasks_path(show_complete: "show complete")
+    |
+    = link_to_if params[:show_complete], 'Incomplete Tasks', tasks_path
   %table.table
     %tr
-      %th{style: "text-align: center;"}
-        %h5
+      %th
+        %h5.task
           =link_to 'Description', params.merge(sort_by: "description")
-      %th{style: "text-align: center;"}
-        %h5
+      %th
+        %h5.task
           =link_to 'Complete?', params.merge(sort_by: "complete")
-      %th{style: "text-align: center;"}
-        %h5
+      %th
+        %h5.task
           =link_to 'Due Date', params.merge(sort_by: "due_date")
       %th
 
