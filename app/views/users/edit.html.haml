@@ -1,2 +1,4 @@
 .container
   = render 'form'
+  .well.text-center.col-sm-3.col-sm-offset-2
+    = link_to "Delete User", @user, method: :delete,  class: "btn btn-primary"
