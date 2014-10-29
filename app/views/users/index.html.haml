@@ -5,22 +5,19 @@
   %table.table
     %tr
       %th
-        %h5 First Name
-      %th
-        %h5 Last Name
+        %h5 Name
       %th
         %h5 Email
       %th
 
     -@users.each do |user|
       %tr
-        %td= user.first_name
-
-        %td= user.last_name
+        %td
+          = user.first_name
+          = user.last_name
 
         %td
           %a(href= "mailto:#")=user.email
 
         %td
-          = link_to "Show", user, class: "btn btn-primary"
-          = link_to "Edit", edit_user_path(user), class: "btn btn-primary"
+          = link_to "Edit", edit_user_path(user), class: "btn btn-primary pull-right"
