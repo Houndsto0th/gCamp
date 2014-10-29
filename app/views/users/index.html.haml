@@ -1,6 +1,6 @@
 .container
   .h1
-    Tasks
+    Users
     =link_to 'New User', new_user_path, class: "btn btn-info pull-right"
   %table.table
     %tr
@@ -10,6 +10,7 @@
         %h5 Last Name
       %th
         %h5 Email
+      %th
 
     -@users.each do |user|
       %tr
@@ -18,3 +19,7 @@
         %td= user.last_name
 
         %td= user.email
+
+        %td
+          = link_to "Show", user, class: "btn btn-primary"
+          = link_to "Edit", edit_user_path(user), class: "btn btn-primary"

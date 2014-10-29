@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def create
@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path, notice: "User Saved: Success!"
     end
+  end
+
+  def edit
   end
 
   def update
@@ -28,7 +31,7 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @task = User.find(params[:id])
+      @user = User.find(params[:id])
     end
 
     def user_params
