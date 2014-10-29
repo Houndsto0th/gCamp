@@ -8,8 +8,4 @@
     = @user.last_name
   %p
     %b Email
-    = @user.email
-
-  = link_to 'Edit', edit_user_path(@user)
-  \|
-  = link_to 'Back', user_path
+    %a(href= "mailto:#")=@user.email

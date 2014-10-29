@@ -18,7 +18,8 @@
 
         %td= user.last_name
 
-        %td= user.email
+        %td
+          %a(href= "mailto:#")=user.email
 
         %td
           = link_to "Show", user, class: "btn btn-primary"
