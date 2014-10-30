@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 group :production do
   gem "rails_12factor"
 end
+
+#kaminari facilitates pagination
+gem 'kaminari'
 #faker generates random data to produce 'chewy' data sets
 gem 'faker'
 # postgresql
