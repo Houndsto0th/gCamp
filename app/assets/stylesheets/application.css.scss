@@ -16,6 +16,10 @@
  *= require_self
  */
 
+.table > tbody > tr > td{
+  vertical-align: middle;
+}
+
 .alert{
   text-align: center;
 }
@@ -23,7 +27,6 @@
 .task{
   text-align: center;
 }
-
 .form-horizontal .control-label {
   text-align: left;
 }

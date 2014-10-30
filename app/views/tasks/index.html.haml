@@ -3,6 +3,7 @@
     Tasks
     = link_to 'New Task', new_task_path, class: "btn btn-info pull-right"
 .container
+
   .pull-right
     = link_to_unless params[:show_complete], 'All Tasks', tasks_path(show_complete: "show complete")
     |
@@ -10,7 +11,7 @@
   %table.table
     %tr
       %th
-        %h5.task
+        %h5
           =link_to 'Description', params.merge(sort_by: "description")
       %th
         %h5.task
@@ -44,4 +45,5 @@
             .btn-group
               = link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-warning pull-right"
   %hr
+  =paginate @tasks
   %br
