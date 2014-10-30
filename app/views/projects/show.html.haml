@@ -1,0 +1,10 @@
+.container
+
+  %table.table
+    %tr
+      %th.h5
+        Project Name
+    %tr
+      %td
+        = @project.proj_name
+  =link_to "Index", projects_path, class: "btn btn-primary"

@@ -1,0 +1,20 @@
+.container
+  .h1
+    Projects
+    = link_to "New Project", new_project_path, class: "btn btn-primary pull-right"
+
+.container
+
+  %table.table
+    %tr
+      %th.h5
+        Project Name
+      %th
+
+    - @projects.each do |project|
+      %tr
+        %td
+          =link_to project.proj_name, project
+        %td
+          = link_to "edit", edit_project_path(project), class: "btn btn-primary pull-right"
+          = link_to
