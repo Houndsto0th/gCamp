@@ -2,9 +2,10 @@
 
 
   .form-group
-    =f.label 'Project Name', class: 'control-label col-sm-2'
+    =f.label 'Name', class: 'col-sm-1 control-label'
     .col-sm-3
       =f.text_field :proj_name, class:"form-control"
 
   .form-group
-    =f.submit class: 'btn btn-primary col-sm-offset-2'
+    .col-sm-offset-1.col-sm-10
+      =f.submit class: 'btn btn-primary'

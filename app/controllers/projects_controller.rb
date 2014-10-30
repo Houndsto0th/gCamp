@@ -32,8 +32,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy(params[:id])
-    redirect_to project_path, notice: "Project Deletion: Success!"
+    @project.destroy
+      redirect_to projects_path, notice: "Project Deletion: Success!"
   end
 
 

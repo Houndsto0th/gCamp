@@ -8,13 +8,9 @@
   %table.table
     %tr
       %th.h5
-        Project Name
-      %th
+        Name
 
     - @projects.each do |project|
       %tr
         %td
           =link_to project.proj_name, project
-        %td
-          = link_to "edit", edit_project_path(project), class: "btn btn-primary pull-right"
-          = link_to
