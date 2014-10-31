@@ -8,6 +8,7 @@
     = link_to_unless params[:show_complete], 'All Tasks', tasks_path(show_complete: "show complete")
     |
     = link_to_if params[:show_complete], 'Incomplete Tasks', tasks_path
+  =paginate @tasks
   %table.table
     %tr
       %th
