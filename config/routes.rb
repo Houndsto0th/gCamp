@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users
-  resources :tasks
+  resources :tasks do
+    patch :toggle, on: :member
+  end
   resources :projects
   root "pages#index"
   get "about" => "pages#about", as: :about

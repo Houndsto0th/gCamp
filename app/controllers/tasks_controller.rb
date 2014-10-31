@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
 
   # GET /tasks
   # GET /tasks.json
@@ -26,6 +26,7 @@ class TasksController < ApplicationController
   def edit
 
   end
+
 
   # POST /tasks
   # POST /tasks.json
@@ -57,6 +58,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def toggle
+    @task.update(complete: !@task.complete)
+    taskparam = {show_complete: params[:show_complete], sort_by: params[:sort_by], page: params[:page]}
+    redirect_to tasks_path(taskparam)
+  end
+
+
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
@@ -73,6 +81,7 @@ class TasksController < ApplicationController
     def set_task
       @task = Task.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params

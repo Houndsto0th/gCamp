@@ -25,12 +25,14 @@
     - @tasks.each do |task|
       %tr{class: ("danger" if task.isdue == true)}
         %td= task.description
-        -if task.complete == true
-          %td{style: "text-align: center;"}
-            .btn.btn-md.glyphicon.glyphicon-check
-        -if task.complete == false
-          %td{style: "text-align: center;"}
-            .btn.btn-md.glyphicon.glyphicon-unchecked
+        %td{style: "text-align: center;"}
+          - taskparam = {show_complete: params[:show_complete], sort_by: params[:sort_by], page: params[:page]}
+          -if task.complete == true
+            =link_to toggle_task_path(task, taskparam), method: :patch do
+              .btn.btn-md.glyphicon.glyphicon-check
+          -if task.complete == false
+            =link_to toggle_task_path(task, taskparam), method: :patch do
+              .btn.btn-md.glyphicon.glyphicon-unchecked
 
         %td{style: "text-align: center;"}
           - if task.due_date
@@ -44,7 +46,7 @@
               = link_to 'Edit', edit_task_path(task), class: "btn btn-info pull-right"
 
             .btn-group
-              = link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-warning pull-right"
+              = link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger pull-right"
   %hr
   =paginate @tasks
   %br
