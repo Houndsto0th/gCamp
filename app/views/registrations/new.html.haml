@@ -1,0 +1,24 @@
+.container
+  .well.col-sm-4.col-sm-offset-4
+    .h1 Sign Up
+
+    = form_for @user, url: signup_path do |f|
+      - if @user.errors.present?
+        %ul
+          - @user.errors.full_messages.each do |message|
+            %li= message
+
+
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: "form-control"
+
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: "form-control"
+
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: "form-control"
+      .form-group
+        = f.submit "Sign up"

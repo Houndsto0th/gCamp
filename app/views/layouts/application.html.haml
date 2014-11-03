@@ -24,6 +24,12 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{:href => root_path} gCamp
+        %ul.nav.navbar-nav.navbar-right
+          - if current_user
+            %li= link_to "Sign Out", signout_path
+          - else
+            %li= link_to "Sign Up", signup_path
+            %li= link_to "Sign In", signin_path
           / /.navbar-collapse`
     .container
       - unless notice.nil?
