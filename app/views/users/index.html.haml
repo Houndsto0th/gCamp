@@ -13,8 +13,7 @@
     -@users.each do |user|
       %tr
         %td
-          =link_to user.first_name, user
-          =link_to user.last_name
+          =link_to "#{user.first_name} #{user.last_name}", user
         %td
           %a(href= "mailto:#")=user.email
 
