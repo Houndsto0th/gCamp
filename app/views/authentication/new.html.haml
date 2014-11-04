@@ -4,8 +4,7 @@
     %br
     = form_tag signin_path do |f|
       %ul
-        %li
-          .label.label-danger=@sign_in_error
+        %li.label.label-danger=@sign_in_error
 
       .form-group
         = label_tag :email
