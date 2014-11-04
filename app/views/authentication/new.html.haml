@@ -1,14 +1,17 @@
 .container
   .well.col-sm-4.col-sm-offset-4
     %h1 Sign into gCamp
-
+    %br
     = form_tag signin_path do |f|
+      %ul
+        %li
+          .label.label-danger=@sign_in_error
 
       .form-group
         = label_tag :email
-        = email_field_tag :email
+        = email_field_tag :email, '', {'class' => 'form-control', 'placeholder' => 'joe@example.com'}
       .form-group
         = label_tag :password
-        = password_field_tag :password
+        = password_field_tag :password, '', {'class' => 'form-control'}
       .form-group
         = submit_tag "Sign in", class: "btn btn-primary"

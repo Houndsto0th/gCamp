@@ -1,13 +1,21 @@
 .container
   .well.col-sm-4.col-sm-offset-4
-    .h1 Sign Up
+    .h1 Sign up for gCamp!
 
     = form_for @user, url: signup_path do |f|
       - if @user.errors.present?
         %ul
           - @user.errors.full_messages.each do |message|
-            %li= message
+            %li
+              .label.label-danger= message
 
+      .form-group
+        =f.label :first_name
+        =f.text_field :first_name, class: "form-control"
+
+      .form-group
+        =f.label :last_name
+        =f.text_field :last_name, class: "form-control"
 
       .form-group
         = f.label :email
