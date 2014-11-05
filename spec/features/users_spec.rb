@@ -57,7 +57,7 @@ feature "Users" do
     expect(page).to have_content("Email is invalid")
   end
 
-  scenario "Users edit user with invalid email" do
+  scenario "Users delete a user" do
     User.create!(
     first_name: "Test",
     last_name: "Testington",
