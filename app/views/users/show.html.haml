@@ -12,3 +12,5 @@
   %p
     %b Email
     %a(href= "mailto:#")=@user.email
+
+  = link_to "Edit", edit_user_path(@user), class: "btn btn-primary"
