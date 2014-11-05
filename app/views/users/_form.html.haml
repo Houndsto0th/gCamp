@@ -1,27 +1,33 @@
 = form_for(@user, html:{class: "form-horizontal"}) do |f|
 
+  - if @user.errors.present?
+    %ul.col-sm-offset-2
+      - @user.errors.full_messages.each do |message|
+        %li
+          .label.label-danger= message
+
   .form-group
-    =f.label :"First Name", class: "col-sm-2 control-label"
+    =f.label :first_name, class: "col-sm-2 control-label"
     .col-sm-3
       =f.text_field :first_name, class: "form-control"
 
   .form-group
-    =f.label :"Last Name", class: "col-sm-2 control-label"
+    =f.label :last_name, class: "col-sm-2 control-label"
     .col-sm-3
       =f.text_field :last_name, class: "form-control"
 
   .form-group
-    =f.label :"Email", class: "col-sm-2 control-label"
+    =f.label :email, class: "col-sm-2 control-label"
     .col-sm-3
       =f.text_field :email, class: "form-control"
 
   -if !@user.id
     .form-group
-      =f.label :"Password", class: "col-sm-2 control-label"
+      =f.label :password, class: "col-sm-2 control-label"
       .col-sm-3
         =f.password_field :password, class: "col-sm-2 form-control"
     .form-group
-      =f.label :"Password Confirmation", class: "col-sm-2 control-label"
+      =f.label :password_confirmation, class: "col-sm-2 control-label"
       .col-sm-3
         =f.password_field :password_confirmation, class: "col-sm-2 form-control"
 
