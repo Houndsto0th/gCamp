@@ -1,1 +1,1 @@
-https://travis-ci.org/Houndsto0th/gCamp.svg
+![](https://travis-ci.org/Houndsto0th/gCamp.svg)
