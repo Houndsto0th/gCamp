@@ -8,6 +8,6 @@ class Task < ActiveRecord::Base
     end
   end
 
-
+  validates_date :due_date, on_or_after: lambda {Date.current}, on: :create
 
 end

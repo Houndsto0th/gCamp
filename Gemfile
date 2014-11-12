@@ -4,6 +4,7 @@ group :production do
   gem "rails_12factor"
 end
 
+gem 'validates_timeliness', '~> 3.0'
 #kaminari facilitates pagination
 gem 'kaminari'
 #faker generates random data to produce 'chewy' data sets

@@ -1,0 +1,5 @@
+- if collection.errors.present?
+  %ul.col-sm-offset-2
+    - collection.errors.full_messages.each do |message|
+      %li
+        .label.label-danger= message
