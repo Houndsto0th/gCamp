@@ -9,8 +9,12 @@
     %tr
       %th.h5
         Name
+      %th.h5
+        Tasks
 
     - @projects.each do |project|
       %tr
         %td
           =link_to project.proj_name, project
+        %td
+          =link_to project.tasks.count, project_tasks_path(project)

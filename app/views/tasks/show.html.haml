@@ -2,11 +2,11 @@
 
   %p
     %b Description:
-    = @task.description
+    = @project.task.description
   %p
     %b Due Date:
-    - if @task.due_date
-      = @task.due_date.strftime("%m/%d/%Y")
+    - if @project.task.due_date
+      = @project.task.due_date.strftime("%m/%d/%Y")
 
   %p
     %b Complete?

@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   resources :users
-  resources :tasks do
-    patch :toggle, on: :member
-  end
-  
+
+
   get '/sign-up' => 'registrations#new', as: :signup
   post '/sign-up' => 'registrations#create'
   get '/sign-in' => 'authentication#new', as: :signin
@@ -11,7 +9,11 @@ Rails.application.routes.draw do
   get '/sign-out' => 'authentication#destroy', as: :signout
 
 
-  resources :projects
+  resources :projects do
+    resources :tasks do
+      patch :toggle, on: :member
+    end
+  end
   root "pages#index"
   get "about" => "pages#about", as: :about
   get "terms" => "pages#terms", as: :terms

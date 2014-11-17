@@ -1,6 +1,10 @@
 .container
-  %h1
+  %h2
     = @project.proj_name
     .pull-right
       = link_to "Edit", edit_project_path, class: "btn btn-primary"
       = link_to "Destroy", @project, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"
+  .container
+    
+    %h4
+      = link_to "#{@project.tasks.count} Tasks", project_tasks_path(@project)
