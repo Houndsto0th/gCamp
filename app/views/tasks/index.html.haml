@@ -2,6 +2,13 @@
   .h1
     Tasks for "#{@project.proj_name}"
     = link_to 'New Task', new_project_task_path(@project), class: "btn btn-info pull-right"
+  %ol.breadcrumb
+    %li
+      %a{:href => projects_path}Projects
+    %li
+      %a{:href => project_path(@project)}=@project.proj_name
+    %li.active
+      Tasks
 .container
 
   .pull-right
