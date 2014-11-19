@@ -30,7 +30,7 @@
       %th
 
     - @tasks.each do |task|
-      %tr{class: ("danger" if task.isdue == true)}
+      %tr{class: ("danger" if task.isdue == true && task.complete == false)}
         %td= task.description
         %td{style: "text-align: center;"}
           - taskparam = {show_complete: params[:show_complete], sort_by: params[:sort_by], page: params[:page]}

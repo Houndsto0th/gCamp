@@ -1,7 +1,7 @@
 .container
   .h1
     #{@project.proj_name}: Manage Members
-  =render 'partialshared/errors', collection: @membership
+  =render 'shared/errors', object: @membership
   =render 'form'
 
 .container
