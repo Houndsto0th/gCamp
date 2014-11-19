@@ -1,10 +1,7 @@
 .container
   .h1
     #{@project.proj_name}: Manage Members
-  -if @membership.errors.any?
-    = @membership.errors.full_messages.each do |message|
-      .alert-alert-danger
-        =message
+  =render 'partialshared/errors', collection: @membership
   =render 'form'
 
 .container
@@ -16,5 +13,5 @@
           %tr
             %td= link_to user.full_name, user_path(user)
             %td= f.select :role, ["Member", "Owner"], {}, class: "dropdown-toggle form-control"
-            %td= f.submit
-            %td= link_to "", project_membership_path(@project, member), method: :delete, :data => { :confirm => 'Are you sure?' }, class: "glyphicon glyphicon-trash"
+            %td= f.submit class: "btn btn-primary"
+            %td= link_to "", project_membership_path(@project, member), method: :delete, :data => { :confirm => 'Are you sure?' }, class: "glyphicon glyphicon-remove"

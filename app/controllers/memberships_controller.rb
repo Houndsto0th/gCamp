@@ -22,7 +22,7 @@ class MembershipsController < ApplicationController
   end
 
   def update
-    @membership = @project.memberships(membership_params)
+    @membership = @project.memberships.find(params[:id])
     if @membership.update(membership_params)
       redirect_to project_memberships_path(@project), notice: "Membership Update"
     else
@@ -35,7 +35,7 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    @membership = @project.memberships(membership_params)
+    @membership = @project.memberships.find(params[:id])
     @membership.destroy
     redirect_to project_memberships_path(@project), notice: "Member Removed"
 

@@ -12,6 +12,6 @@
   .container
 
     %h4
-      = link_to "#{@project.tasks.count} Tasks", project_tasks_path(@project)
+      = link_to pluralize(@project.tasks.count, "Tasks"), project_tasks_path(@project)
     %h4
-      = link_to "Memberships", project_memberships_path(@project)
+      = link_to "Manage Project Members", project_memberships_path(@project)

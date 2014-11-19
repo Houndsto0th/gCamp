@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     if params[:show_complete]
-      @tasks = @project.tasks.order(params[:sort_by]).page(params[:page]).all
+      @tasks = @project.tasks.order(params[:sort_by]).page(params[:page]).per(5).all
     else
       @tasks = @project.tasks.where(complete: false).order(params[:sort_by]).page(params[:page])
     end
@@ -87,6 +87,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description, :complete, :due_date)
+      params.require(:task).permit(:description, :complete, :due_date, :page)
     end
 end
