@@ -2,7 +2,7 @@
   .well.col-sm-4.col-sm-offset-4
     .h1 Sign up for gCamp!
     = form_for @user, url: signup_path do |f|
-      =render 'shared/errors', object: @user
+      .col-sm-offset-2=render 'shared/errors', object: @user
       .form-group
         =f.label :first_name
         =f.text_field :first_name, class: "form-control"

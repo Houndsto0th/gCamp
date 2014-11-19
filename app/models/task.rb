@@ -11,5 +11,6 @@ class Task < ActiveRecord::Base
   end
 
   validates_date :due_date, on_or_after: lambda {Date.current}, on: :create
+  validates :description, presence: true
 
 end
