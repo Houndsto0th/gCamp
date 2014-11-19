@@ -17,7 +17,7 @@ class MembershipsController < ApplicationController
     if @membership.save
       redirect_to project_memberships_path(@project), notice: "Membership Created"
     else
-      redirect_to project_memberships_path(@project)
+      render :index
     end
   end
 
