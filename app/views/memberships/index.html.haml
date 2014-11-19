@@ -1,0 +1,23 @@
+.container
+  .h1
+    Members for "#{@project.proj_name}"
+  -if @membership.errors.present?
+    = @membership.errors.full_message.each do |message|
+      .alert-alert-danger
+        %ul
+          %li=message
+  =render 'form'
+
+.container
+  %table.table
+    %tr
+      %th
+        Member Name
+      %th
+        Role
+    - @memberships.each do |membership|
+      %tr
+        %td
+          = membership.user.full_name
+        %td
+          = membership.role

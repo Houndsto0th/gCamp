@@ -1,0 +1,53 @@
+class MembershipsController < ApplicationController
+  before_action do
+    @project = Project.find(params[:project_id])
+  end
+
+  def index
+    @membership = @project.memberships.new
+    @memberships = @project.memberships.all
+  end
+
+  def new
+    @membership = @project.memberships.new
+  end
+
+  def create
+    @membership = @project.memberships.new(membership_params)
+    if @membership.save
+      redirect_to project_memberships_path(@project), notice: "Membership Created"
+    else
+      redirect_to project_memberships_path(@project)
+    end
+  end
+
+  def update
+    @membership = @project.memberships(membership_params)
+    if @membership.update(membership_params)
+      redirect_to project_memberships_path(@project), notice: "Membership Update"
+    else
+      render :edit
+    end
+  end
+
+
+  def edit
+  end
+
+  def destroy
+    @membership = @project.memberships(membership_params)
+    @membership.destroy
+    redirect_to project_memberships_path(@project), notice: "Member Removed"
+
+  end
+
+
+  private
+
+    def membership_params
+      params.require(:membership).permit(:role, :user_id, :project_id)
+    end
+
+
+
+end

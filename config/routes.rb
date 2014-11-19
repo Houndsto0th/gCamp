@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :tasks do
       patch :toggle, on: :member
     end
+    resources :memberships
   end
+  
   root "pages#index"
   get "about" => "pages#about", as: :about
   get "terms" => "pages#terms", as: :terms
