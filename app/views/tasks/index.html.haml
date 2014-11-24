@@ -1,59 +1,59 @@
-.container
-  .h1
-    Tasks for "#{@project.proj_name}"
-    = link_to 'New Task', new_project_task_path(@project), class: "btn btn-info pull-right"
-  %ol.breadcrumb
-    %li
-      %a{:href => projects_path}Projects
-    %li
-      %a{:href => project_path(@project)}=@project.proj_name
-    %li.active
-      Tasks
-.container
 
-  .pull-right
-    = link_to_unless params[:show_complete], 'All Tasks', project_tasks_path(show_complete: "show complete")
-    |
-    = link_to_if params[:show_complete], 'Incomplete Tasks', project_tasks_path
-  =paginate @tasks
-  %table.table
-    %tr
-      %th
-        %h5
-          =link_to 'Description', params.merge(sort_by: "description")
-      %th
-        %h5.task
-          =link_to 'Complete?', params.merge(sort_by: "complete")
-      %th
-        %h5.task
-          =link_to 'Due Date', params.merge(sort_by: "due_date")
-      %th
+.h1
+  Tasks for "#{@project.proj_name}"
+  = link_to 'New Task', new_project_task_path(@project), class: "btn btn-info pull-right"
+%ol.breadcrumb
+  %li
+    %a{:href => projects_path}Projects
+  %li
+    %a{:href => project_path(@project)}=@project.proj_name
+  %li.active
+    Tasks
 
-    - @tasks.each do |task|
-      %tr{class: ("danger" if task.isdue == true && task.complete == false)}
-        %td= task.description
-        %td{style: "text-align: center;"}
-          - taskparam = {show_complete: params[:show_complete], sort_by: params[:sort_by], page: params[:page]}
-          -if task.complete == true
-            =link_to toggle_project_task_path(@project, task, taskparam), method: :patch do
-              .btn.btn-md.glyphicon.glyphicon-check
-          -if task.complete == false
-            =link_to toggle_project_task_path(@project, task, taskparam), method: :patch do
-              .btn.btn-md.glyphicon.glyphicon-unchecked
 
-        %td{style: "text-align: center;"}
-          - if task.due_date
-            = task.due_date.strftime("%m/%d/%Y")
-        %td
-          .btn-toolbar.pull-right
-            .btn-group
-              = link_to 'Show', project_task_path(@project, task), class: "btn btn-success pull-right"
+.pull-right
+  = link_to_unless params[:show_complete], 'All Tasks', project_tasks_path(show_complete: "show complete")
+  |
+  = link_to_if params[:show_complete], 'Incomplete Tasks', project_tasks_path
+=paginate @tasks
+%table.table
+  %tr
+    %th
+      %h5
+        =link_to 'Description', params.merge(sort_by: "description")
+    %th
+      %h5.task
+        =link_to 'Complete?', params.merge(sort_by: "complete")
+    %th
+      %h5.task
+        =link_to 'Due Date', params.merge(sort_by: "due_date")
+    %th
 
-            .btn-group
-              = link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info pull-right"
+  - @tasks.each do |task|
+    %tr{class: ("danger" if task.isdue == true && task.complete == false)}
+      %td= task.description
+      %td{style: "text-align: center;"}
+        - taskparam = {show_complete: params[:show_complete], sort_by: params[:sort_by], page: params[:page]}
+        -if task.complete == true
+          =link_to toggle_project_task_path(@project, task, taskparam), method: :patch do
+            .btn.btn-md.glyphicon.glyphicon-check
+        -if task.complete == false
+          =link_to toggle_project_task_path(@project, task, taskparam), method: :patch do
+            .btn.btn-md.glyphicon.glyphicon-unchecked
 
-            .btn-group
-              = link_to 'Destroy', project_task_path(@project, task), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger pull-right"
-  %hr
-  =paginate @tasks
-  %br
+      %td{style: "text-align: center;"}
+        - if task.due_date
+          = task.due_date.strftime("%m/%d/%Y")
+      %td
+        .btn-toolbar.pull-right
+          .btn-group
+            = link_to 'Show', project_task_path(@project, task), class: "btn btn-success pull-right"
+
+          .btn-group
+            = link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info pull-right"
+
+          .btn-group
+            = link_to 'Destroy', project_task_path(@project, task), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger pull-right"
+%hr
+=paginate @tasks
+%br

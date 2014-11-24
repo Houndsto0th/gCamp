@@ -1,17 +1,22 @@
-.container
+.h1
+  = @task.description
 
-  %p
-    %b Description:
-    = @project.task.description
-  %p
-    %b Due Date:
-    - if @project.task.due_date
-      = @project.task.due_date.strftime("%m/%d/%Y")
+%ol.breadcrumb
+  %li
+    %a{:href => projects_path}Projects
+  %li
+    %a{:href => project_path(@project)}=@project.proj_name
+  %li
+    %a{:href => project_tasks_path(@project)}Tasks
+  %li.active
+    Show
 
-  %p
-    %b Complete?
-    = @task.complete
 
-  = link_to 'Edit', edit_task_path(@task)
-  \|
-  = link_to 'Back', tasks_path
+%p
+  %b Due Date:
+  - if @task.due_date
+    = @task.due_date.strftime("%m/%d/%Y")
+
+%p
+  %b Complete?
+  = @task.complete

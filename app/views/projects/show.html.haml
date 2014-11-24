@@ -1,17 +1,16 @@
-.container
-  %h2
-    = @project.proj_name
-    .pull-right
-      = link_to "Edit", edit_project_path, class: "btn btn-primary"
-      = link_to "Destroy", @project, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"
-  %ol.breadcrumb
-    %li
-      %a{:href => projects_path}Projects
-    %li.active
-      =@project.proj_name
-  .container
+%h2
+  = @project.proj_name
+  .pull-right
+    = link_to "Edit", edit_project_path, class: "btn btn-primary"
+    = link_to "Destroy", @project, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"
+%ol.breadcrumb
+  %li
+    %a{:href => projects_path}Projects
+  %li.active
+    =@project.proj_name
 
-    %h4
-      = link_to pluralize(@project.tasks.count, "Task"), project_tasks_path(@project)
-    %h4
-      = link_to pluralize(@project.memberships.count, "Member"), project_memberships_path(@project)
+
+%h4
+  = link_to pluralize(@project.tasks.count, "Task"), project_tasks_path(@project)
+%h4
+  = link_to pluralize(@project.memberships.count, "Member"), project_memberships_path(@project)

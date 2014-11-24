@@ -35,7 +35,7 @@
     .container
       - unless notice.nil?
         .alert.alert-success= notice
-    = yield
+      = yield
 
   .container
     %footer{style: "padding-bottom:25px;"}
