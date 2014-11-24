@@ -1,6 +1,7 @@
 Project.delete_all
 Task.delete_all
 User.delete_all
+Membership.delete_all
 25.times do
   project = Project.create!(proj_name: "#{Faker::Hacker.ingverb.humanize} #{Faker::Hacker.noun.humanize}")
     rand(10).times do
