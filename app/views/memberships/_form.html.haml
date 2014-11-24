@@ -4,7 +4,7 @@
     =f.collection_select :user_id, User.all, :id, :full_name, {include_blank: "Please select a user..."}, {class: "dropdown-toggle form-control"}
 
   .form-group
-    =f.select :role, ['Owner', 'Member'], {include_blank: "Role"}, {class: "dropdown-toggle form-control"}
+    =f.select :role, ['Member', 'Owner'], {}, {class: "dropdown-toggle form-control"}
 
   .form-group
     =f.submit "Add a member", class: "btn btn-primary"

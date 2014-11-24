@@ -24,7 +24,7 @@ class MembershipsController < ApplicationController
   def update
     @membership = @project.memberships.find(params[:id])
     if @membership.update(membership_params)
-      redirect_to project_memberships_path(@project), notice: "Membership Update"
+      redirect_to project_memberships_path(@project), notice: "Membership Updated"
     else
       render :edit
     end
