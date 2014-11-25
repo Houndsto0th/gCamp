@@ -5,11 +5,12 @@ Membership.delete_all
 25.times do
   project = Project.create!(proj_name: "#{Faker::Hacker.ingverb.humanize} #{Faker::Hacker.noun.humanize}")
     rand(10).times do
-      Task.create!(description: Faker::Lorem.sentence,
+      task = Task.create!(description: Faker::Lorem.sentence,
                   due_date: Faker::Time.forward(24),
                   complete: [true, true, false].sample,
                   project_id: project.id)
                 end
+
 
     rand(5).times do
       user = User.create!(
@@ -21,5 +22,5 @@ Membership.delete_all
                   role: ["Owner", "Member", "Member", "Member", "Member"].sample,
                   project_id: project.id,
                   user_id: user.id)
-                end
+    end
 end

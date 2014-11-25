@@ -16,7 +16,8 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-
+    @comments = @task.comments.all.where(params[:task_id])
+    @comment = @task.comments.new
   end
 
   # GET /tasks/new

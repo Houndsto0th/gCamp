@@ -31,7 +31,7 @@
 
   - @tasks.each do |task|
     %tr{class: ("danger" if task.isdue == true && task.complete == false)}
-      %td= task.description
+      %td=link_to task.description, project_task_path(@project, task)
       %td{style: "text-align: center;"}
         - taskparam = {show_complete: params[:show_complete], sort_by: params[:sort_by], page: params[:page]}
         -if task.complete == true
@@ -45,15 +45,10 @@
         - if task.due_date
           = task.due_date.strftime("%m/%d/%Y")
       %td
-        .btn-toolbar.pull-right
-          .btn-group
-            = link_to 'Show', project_task_path(@project, task), class: "btn btn-success pull-right"
 
-          .btn-group
-            = link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info pull-right"
-
-          .btn-group
-            = link_to 'Destroy', project_task_path(@project, task), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger pull-right"
+        = link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info"
+      %td
+        = link_to '', project_task_path(@project, task), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "glyphicon glyphicon-remove"
 %hr
 =paginate @tasks
 %br

@@ -8,11 +8,9 @@ Rails.application.routes.draw do
   post '/sign-in' => 'authentication#create'
   get '/sign-out' => 'authentication#destroy', as: :signout
 
-  resources :tasks, only: [] do
-    resources :comments
-  end
   resources :projects do
     resources :tasks do
+      resources :comments
       patch :toggle, on: :member
     end
     resources :memberships
