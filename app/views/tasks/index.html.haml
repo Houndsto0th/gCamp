@@ -1,7 +1,10 @@
-
-.h1
-  Tasks for "#{@project.proj_name}"
-  = link_to 'New Task', new_project_task_path(@project), class: "btn btn-info pull-right"
+.page-header
+  .pull-right
+    = link_to_unless params[:show_complete], 'All Tasks', project_tasks_path(show_complete: "show complete")
+    |
+    = link_to_if params[:show_complete], 'Incomplete Tasks', project_tasks_path
+    = link_to 'New Task', new_project_task_path(@project), class: "btn btn-info"
+  .h1 Tasks for "#{@project.proj_name}"
 %ol.breadcrumb
   %li
     %a{:href => projects_path}Projects
@@ -10,11 +13,6 @@
   %li.active
     Tasks
 
-
-.pull-right
-  = link_to_unless params[:show_complete], 'All Tasks', project_tasks_path(show_complete: "show complete")
-  |
-  = link_to_if params[:show_complete], 'Incomplete Tasks', project_tasks_path
 =paginate @tasks
 %table.table
   %tr
@@ -28,10 +26,13 @@
       %h5.task
         =link_to 'Due Date', params.merge(sort_by: "due_date")
     %th
+    %th
 
   - @tasks.each do |task|
     %tr{class: ("danger" if task.isdue == true && task.complete == false)}
-      %td=link_to task.description, project_task_path(@project, task)
+      %td
+        =link_to "#{task.description}", project_task_path(@project, task)
+        = link_to"#{task.comments.count}", project_task_path(@project, task), class: "badge"
       %td{style: "text-align: center;"}
         - taskparam = {show_complete: params[:show_complete], sort_by: params[:sort_by], page: params[:page]}
         -if task.complete == true
@@ -46,7 +47,7 @@
           = task.due_date.strftime("%m/%d/%Y")
       %td
 
-        = link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info"
+        = link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info pull-right"
       %td
         = link_to '', project_task_path(@project, task), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "glyphicon glyphicon-remove"
 %hr

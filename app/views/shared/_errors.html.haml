@@ -1,5 +1,9 @@
 - if object.errors.present?
-  %ul
-    - object.errors.full_messages.each do |message|
-      %li
-        .label.label-danger= message
+  .alert.alert-danger
+    %strong
+      = pluralize(object.errors.count, "error")
+      prohibited this from being saved:
+    %ul.list-unstyled
+      - object.errors.full_messages.each do |message|
+        %li
+          = message

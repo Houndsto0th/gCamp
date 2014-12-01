@@ -11,6 +11,7 @@ class TasksController < ApplicationController
     else
       @tasks = @project.tasks.where(complete: false).order(params[:sort_by]).page(params[:page])
     end
+    
   end
 
   # GET /tasks/1

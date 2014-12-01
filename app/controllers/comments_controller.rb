@@ -5,8 +5,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-
     @comment = @task.comments.new(comment_params)
+    @comment.user = current_user
     if @comment.save
       redirect_to project_task_path(@project, @task), notice: "Comment saved"
     else

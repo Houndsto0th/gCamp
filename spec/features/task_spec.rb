@@ -2,60 +2,48 @@ require 'rails_helper'
 
 feature "Tasks" do
 
+  before :each do
+    project = Project.create!(proj_name: "#{Faker::Hacker.ingverb.humanize} #{Faker::Hacker.noun.humanize}")
+      task = Task.create!(description: Faker::Lorem.sentence,
+        due_date: Faker::Time.forward(24),
+        complete: [true, true, false].sample,
+        project_id: project.id,)
+
+      user = User.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        email: Faker::Internet.email,
+        password_digest: Faker::Internet.password,)
+      Membership.create!(
+        role: "Member",
+        project_id: project.id,
+        user_id: user.id,)
+  end
+
+
+
+
   scenario "User creates a new task" do
 
+
+
     visit root_path
-    click_on "tasks"
-    expect(page).to have_content("Tasks")
-    click_on "New Task"
-    fill_in "Description", with: "Testing this description... w00t!"
-    click_on "Create Task"
-    expect(page).to have_content("Testing this description... w00t!")
+    click_on "projects"
+    expect(page).to have_content(project.proj_name)
+
 
   end
 
   scenario "User edits views a task" do
-    Task.create!(
-    description: "Testing this description... w00t!"
-    )
 
-    visit root_path
-    click_on "tasks"
-    expect(page).to have_content("Testing this description... w00t!")
-    click_on "Edit"
-    fill_in "Description", with: "Testing a different description... still w00t!"
-    check "Complete"
-    click_on "Update Task"
-    expect(page).to have_content("Testing a different description... still w00t!")
   end
 
   scenario "User Deletes a task" do
-    Task.create!(
-    description: "Testing this description... w00t!",
-    complete: true
-    )
 
-    visit root_path
-    click_on "tasks"
-    click_on "All Tasks"
-    expect(page).to have_content("Testing this description... w00t!")
-    click_on "Destroy"
-    expect(page).to have_content("Task was successfully destroyed.")
   end
 
   scenario "User views a task" do
-    Task.create!(
-    description: "Testing this description... w00t!",
-    complete: true
-    )
 
-    visit root_path
-    click_on "tasks"
-    click_on "All Tasks"
-    expect(page).to have_content("Testing this description... w00t!")
-    click_on "Show"
-    expect(page).to have_content("Testing this description... w00t!")
-    click_on "Back"
   end
 
 end
