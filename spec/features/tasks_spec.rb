@@ -45,8 +45,8 @@ feature "Tasks" do
 
     visit root_path
     click_on "projects"
-    expect(page).to have_content(task.project.proj_name)
-    click_on task.project.proj_name
+    expect(page).to have_content(project.proj_name)
+    click_on project.proj_name
     expect(page).to have_content("1 Task")
     click_on "1 Task"
     expect(page).to have_content(task.description)
@@ -60,12 +60,13 @@ feature "Tasks" do
 
 
   scenario "User Deletes a task" do
-    task = create_task
+    project = create_project
+    task = create_task(project: project)
 
     visit root_path
     click_on "projects"
-    expect(page).to have_content(task.project.proj_name)
-    click_on task.project.proj_name
+    expect(page).to have_content(project.proj_name)
+    click_on project.proj_name
     expect(page).to have_content("1 Task")
     click_on "1 Task"
     expect(page).to have_content(task.description)

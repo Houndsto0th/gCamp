@@ -19,9 +19,9 @@ def create_user
     password_digest: Faker::Internet.password,)
 end
 
-def create_membership
-  project = create_project
-  user = create_user
+def create_membership(options = {})
+  project = options[:project] || create_project
+  user = options[:user] || create_user
   Membership.create!(
     role: "Member",
     project_id: project.id,
