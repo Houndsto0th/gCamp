@@ -67,6 +67,7 @@ feature "Tasks" do
     expect(page).to have_content("1 Task")
     click_on "1 Task"
     expect(page).to have_content(task.description)
+    
 
   end
 
