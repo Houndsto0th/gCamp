@@ -3,14 +3,13 @@ def create_project
     Project.create!(proj_name: "#{Faker::Hacker.ingverb.humanize} #{Faker::Hacker.noun.humanize}")
 end
 
-def create_task
-  project = create_project
+def create_task(options = {})
+  project = options[:project] || create_project
   Task.create!(description: Faker::Lorem.sentence,
     due_date: Faker::Time.forward(24),
     complete: false,
     project_id: project.id,)
 end
-
 
 def create_user
   user = User.create!(

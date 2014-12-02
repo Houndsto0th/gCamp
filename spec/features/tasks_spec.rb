@@ -39,7 +39,9 @@ feature "Tasks" do
 
 
   scenario "User edits a task" do
-    task = create_task
+    project = create_project
+    task = create_task(project: project)
+
 
     visit root_path
     click_on "projects"
@@ -52,7 +54,7 @@ feature "Tasks" do
     click_on "Edit"
     fill_in "Description", with: Faker::Lorem.sentence
     click_on "Update Task"
-    expect(page).to have_content("successfully updated")
+    expect(page).to have_content(task.reload.description)
 
   end
 
@@ -67,13 +69,8 @@ feature "Tasks" do
     expect(page).to have_content("1 Task")
     click_on "1 Task"
     expect(page).to have_content(task.description)
-    
 
   end
 
-
-  scenario "User views a task" do
-
-  end
 
 end
