@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     else
       @tasks = @project.tasks.where(complete: false).order(params[:sort_by]).page(params[:page])
     end
-    
+
   end
 
   # GET /tasks/1
@@ -53,7 +53,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.'}
+        format.html { redirect_to project_task_path(@project, @task), notice: 'Task was successfully updated.'}
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }

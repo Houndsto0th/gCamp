@@ -11,6 +11,15 @@ require 'rails_helper'
       expect(page).to have_content("Testing out a project w00ty w00t!")
     end
 
+    scenario 'User creates a project with a blank name' do
+      visit root_path
+      click_on 'projects'
+      expect(page).to have_content("Projects")
+      click_on 'New Project'
+      click_on 'Create Project'
+      expect(page).to have_content("can't be blank")
+    end
+
     scenario 'User edits a project' do
       Project.create!(
       proj_name: "Testing a project?"
