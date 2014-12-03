@@ -1,6 +1,9 @@
 require 'rails_helper'
 feature "Users" do
-  scenario "Users create new (vaild) user" do
+  before do
+    User.delete_all
+  end
+  scenario "User creates new (vaild) user" do
     visit root_path
     click_on "users"
     click_on "Create User"
@@ -13,21 +16,23 @@ feature "Users" do
     expect(page).to have_content("User Saved: Success!")
   end
 
-  scenario "Users create blank user" do
+  scenario "User creates a blank user" do
     visit root_path
     click_on "users"
     click_on "Create User"
     click_on "Create User"
-    expect(page).to have_content("can't be blank")
+    expect(page).to have_content("Email can't be blank")
+    expect(page).to have_content("First name can't be blank")
+    expect(page).to have_content("Last name can't be blank")
   end
 
   scenario "Users edit user" do
     User.create!(
-    first_name: "Test",
-    last_name: "Testington",
-    email: "Testington@example.com",
-    password: "pass",
-    password_confirmation: "pass",
+      first_name: "Test",
+      last_name: "Testington",
+      email: "Testington@example.com",
+      password: "pass",
+      password_confirmation: "pass",
     )
 
     visit root_path
@@ -41,11 +46,11 @@ feature "Users" do
 
   scenario "Users edit user with invalid email" do
     User.create!(
-    first_name: "Test",
-    last_name: "Testington",
-    email: "Testington@example.com",
-    password: "pass",
-    password_confirmation: "pass",
+      first_name: "Test",
+      last_name: "Testington",
+      email: "Testington@example.com",
+      password: "pass",
+      password_confirmation: "pass",
     )
 
     visit root_path
@@ -59,11 +64,11 @@ feature "Users" do
 
   scenario "Users delete a user" do
     User.create!(
-    first_name: "Test",
-    last_name: "Testington",
-    email: "Testington@example.com",
-    password: "pass",
-    password_confirmation: "pass",
+      first_name: "Test",
+      last_name: "Testington",
+      email: "Testington@example.com",
+      password: "pass",
+      password_confirmation: "pass",
     )
 
     visit root_path
