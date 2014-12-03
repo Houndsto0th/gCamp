@@ -12,11 +12,11 @@ def create_task(options = {})
 end
 
 def create_user
-  user = User.create!(
+  User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
-    password_digest: Faker::Internet.password,)
+    password: Faker::Internet.password,)
 end
 
 def create_membership(options = {})
@@ -26,4 +26,13 @@ def create_membership(options = {})
     role: "Member",
     project_id: project.id,
     user_id: user.id,)
+end
+
+def log_user_in(options = {})
+  user = options[:user] || create_user
+  visit root_path
+  click_on "Sign In"
+  fill_in "email", with: user.email
+  fill_in "password", with: user.password
+  click_on "Sign in"
 end

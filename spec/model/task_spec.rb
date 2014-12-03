@@ -17,7 +17,7 @@ describe Task do
   it "confirms existing tasks can have a date in the past." do
     task = Task.new
     travel_to 3.years.ago do
-      task.description = "Oh man Time Travel"
+      task.description = "Oh man, Time Travel"
       task.due_date = Date.today
       task.save
     end
