@@ -2,6 +2,23 @@ Project.delete_all
 Task.delete_all
 User.delete_all
 Membership.delete_all
+
+User.create!(
+    first_name: "Hounds",
+    last_name: "Toothington",
+    email: "hounds@example.com",
+    password: "password",
+    admin: true,
+)
+
+User.create!(
+    first_name: "Admin",
+    last_name: "User",
+    email: "admin@example.com",
+    password: "password",
+    admin: true,
+)
+
 25.times do
   project = Project.create!(proj_name: "#{Faker::Hacker.ingverb.humanize} #{Faker::Hacker.noun.humanize}")
     rand(10).times do

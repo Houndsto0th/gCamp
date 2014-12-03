@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  before_action :authorize_member, only: [:index]
+  before_action :authorize_owner
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def show
@@ -27,7 +28,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, notice: "Project Creation: Success!"
+      Membership.create!(project_id: @project.id, user_id: current_user.id, role: "Owner")
+      redirect_to project_tasks_path(@project), notice: "Project Creation: Success!"
     else
       render :new
     end

@@ -1,4 +1,5 @@
 class RegistrationsController < ApplicationController
+  skip_before_action :ensure_logged_in
 
   def new
     @user = User.new
@@ -6,14 +7,14 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(params.require(:user).permit(
-                      :first_name, 
+                      :first_name,
                       :last_name,
                       :email,
                       :password,
                       :password_confirmation))
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to new_project_path
     else
       render :new
     end

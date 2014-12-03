@@ -25,12 +25,8 @@
             %span.icon-bar
           %a.navbar-brand{:href => root_path} gCamp
         %ul.nav.navbar-nav.navbar-right
-          - if current_user
-            %li= link_to "#{current_user.first_name} #{current_user.last_name}", current_user
-            %li= link_to "Sign Out", signout_path
-          - else
-            %li= link_to "Sign Up", signup_path
-            %li= link_to "Sign In", signin_path
+          %li= link_to "Sign Up", signup_path
+          %li= link_to "Sign In", signin_path
           / /.navbar-collapse`
     .container
       - unless notice.nil?
@@ -41,15 +37,11 @@
     %footer{style: "padding-bottom:25px;"}
       %hr.style-one
       .p
-        = link_to_unless_current("about", about_path)
+        = link_to_unless_current("About", about_path)
         |
-        = link_to_unless_current("terms", terms_path)
+        = link_to_unless_current("Terms", terms_path)
         |
-        = link_to_unless_current("faq", faq_path)
-        |
-        = link_to_unless_current("users", users_path)
-        |
-        = link_to_unless_current("projects", projects_path)
+        = link_to_unless_current("Faq", faq_path)
         .pull-right
           = link_to "https://www.linkedin.com/profile/view?id=250805495&trk=nav_responsive_tab_profile_pic" do
             =image_tag("linkedin.png", width: "20em")

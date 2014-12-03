@@ -6,4 +6,8 @@ class Project < ActiveRecord::Base
 
   validates :proj_name, presence: true
 
+  def member?(project)
+    projects.include?(project)
+  end
+  
 end

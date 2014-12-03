@@ -1,5 +1,4 @@
-class PagesController < ApplicationController
-
+class PagesController < PublicController
 
   def index
     @walt = Quote.new("Walt Whitman", ["Simplicity is the glory of expression.", "Be curious, not judgemental."])

@@ -1,8 +1,12 @@
 class TasksController < ApplicationController
+
+
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
   before_action do
     @project = Project.find(params[:project_id])
   end
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
+  before_action :check_for_auth
+
   # GET /tasks
   # GET /tasks.json
   def index

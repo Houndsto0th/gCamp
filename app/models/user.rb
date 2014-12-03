@@ -14,4 +14,14 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def owner?(project)
+    admin? || memberships.where(project_id: project.id, role:"Owner").present?
+  end
+
+  def member?(project)
+    projects.include?(project)
+  end
+
+
+
 end

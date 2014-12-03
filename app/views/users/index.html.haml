@@ -16,6 +16,3 @@
           =link_to "#{user.first_name} #{user.last_name}", user
         %td
           %a(href= "mailto:#")=user.email
-
-        %td
-          = link_to "Edit", edit_user_path(user), class: "btn btn-primary pull-right"
