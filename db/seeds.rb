@@ -76,7 +76,7 @@ user: member,
 comment: Faker::Lorem.sentence
 )
 
-single_owner = Project.create!(proj_name: 'Single Owner')
+single_owner = Project.create!(proj_  name: 'Single Owner')
 Membership.create!(
 project: single_owner,
 user: owner,

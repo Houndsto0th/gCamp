@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def authorize_owner
     current_user.member?(@project)
-  end
+  end 
 
   def check_for_auth
     raise AccessDenied unless current_user.member?(@project)
