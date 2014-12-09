@@ -14,6 +14,11 @@ class UsersController < ApplicationController
   end
 
   def create
+    if current_user.admin?
+      user_params = admin_params
+    else
+      user_params = user_params
+    end
     @user = User.new(user_params)
     if @user.save
       redirect_to users_path, notice: "User Saved: Success!"
@@ -45,6 +50,11 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+
+    def admin_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin)
+    end
+
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
