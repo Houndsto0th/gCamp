@@ -2,16 +2,31 @@ require 'rails_helper'
 
 feature "Tasks" do
 
-  scenario "User creates a new task" do
+  scenario "Visitor cannot create tasks" do
+    user = create_user
     project = create_project
     task = create_task(project: project)
+    membership = create_membership(project: project, user: user)
 
-    logged_in_user
-    click_on "projects"
-    expect(page).to have_content(project.proj_name)
-    click_on project.proj_name
-    expect(page).to have_content("0 Tasks")
-    click_on "0 Tasks"
+
+    visit project_tasks_path(project)
+    expect(page).to have_content("You must be logged in")
+  end
+
+  scenario "User creates a new task" do
+    user = create_user
+    project = create_project
+    task = create_task(project: project)
+    membership = create_membership(project: project, user: user)
+
+    log_user_in(user: user)
+
+    within (".dropdown") do
+      click_on project.proj_name
+    end
+
+    expect(page).to have_content("1 Task")
+    click_on "1 Task"
     click_on "New Task"
     fill_in "Description", with: Faker::Lorem.sentence
     fill_in "Due date", with: Faker::Time.forward(24)
@@ -21,14 +36,19 @@ feature "Tasks" do
   end
 
   scenario "User tries to create a task with no description and date in the past" do
+    user = create_user
     project = create_project
+    task = create_task(project: project)
+    membership = create_membership(project: project, user: user)
 
-    visit root_path
-    click_on "projects"
-    expect(page).to have_content(project.proj_name)
-    click_on project.proj_name
-    expect(page).to have_content("0 Tasks")
-    click_on "0 Tasks"
+    log_user_in(user: user)
+
+    within (".dropdown") do
+      click_on project.proj_name
+    end
+
+    expect(page).to have_content("1 Task")
+    click_on "1 Task"
     click_on "New Task"
     fill_in "Due date", with: Faker::Time.backward(365)
     click_on "Create Task"
@@ -40,14 +60,17 @@ feature "Tasks" do
 
 
   scenario "User edits a task" do
+    user = create_user
     project = create_project
     task = create_task(project: project)
+    membership = create_membership(project: project, user: user)
 
+    log_user_in(user: user)
 
-    visit root_path
-    click_on "projects"
-    expect(page).to have_content(project.proj_name)
-    click_on project.proj_name
+    within (".dropdown") do
+      click_on project.proj_name
+    end
+
     expect(page).to have_content("1 Task")
     click_on "1 Task"
     expect(page).to have_content(task.description)
@@ -61,13 +84,17 @@ feature "Tasks" do
 
 
   scenario "User Deletes a task" do
+    user = create_user
     project = create_project
     task = create_task(project: project)
+    membership = create_membership(project: project, user: user)
 
-    visit root_path
-    click_on "projects"
-    expect(page).to have_content(project.proj_name)
-    click_on project.proj_name
+    log_user_in(user: user)
+
+    within (".dropdown") do
+      click_on project.proj_name
+    end
+
     expect(page).to have_content("1 Task")
     click_on "1 Task"
     expect(page).to have_content(task.description)
