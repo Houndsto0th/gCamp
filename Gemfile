@@ -4,6 +4,9 @@ group :production do
   gem "rails_12factor"
 end
 
+#facilitates API HTTP requests
+gem 'faraday'
+#allows for time travel
 gem 'validates_timeliness', '~> 3.0'
 #kaminari facilitates pagination
 gem 'kaminari'
