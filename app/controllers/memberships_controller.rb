@@ -1,9 +1,9 @@
 class MembershipsController < ApplicationController
-  before_action :authorize_owner, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_member
   before_action do
     @project = Project.find(params[:project_id])
   end
+  before_action :authorize_owner, only: [:update]
+  before_action :authorize_member
 
   def index
     @membership = @project.memberships.new
@@ -27,8 +27,6 @@ class MembershipsController < ApplicationController
     @membership = @project.memberships.find(params[:id])
     if @membership.update(membership_params)
       redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was updated successfully"
-    else
-      render :edit
     end
   end
 

@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
 
-  before_action :authorize_member
   before_action do
     @project = Project.find(params[:project_id])
   end
+  before_action :authorize_member
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
 
   # before_action :check_for_auth

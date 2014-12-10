@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def owner?(project)
-    admin? || memberships.where(project_id: project.id, role:"Owner").present?
+    admin? || memberships.where(project_id: project.id, role:"owner").present?
   end
 
   def member?(project)
