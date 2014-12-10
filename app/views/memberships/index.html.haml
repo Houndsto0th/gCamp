@@ -20,8 +20,9 @@
           %td= f.select :role, ["Member", "Owner"], {}, class: "dropdown-toggle form-control"
           %td= f.submit "Update", class: "btn btn-primary"
           %td= link_to "", project_membership_path(@project, member), method: :delete, :data => { :confirm => 'You\'re about to remove this user' }, class: "glyphicon glyphicon-remove"
-%table.col-sm-4.table-condensed
-  - @project.memberships.where(project_id: @project.id).each do |member|
-    %tr
-      %td= link_to member.user.full_name, user_path(member.user)
-      %td= member.role
+-else
+  %table.col-sm-4.table-condensed
+    - @project.memberships.where(project_id: @project.id).each do |member|
+      %tr
+        %td= link_to member.user.full_name, user_path(member.user)
+        %td= member.role
