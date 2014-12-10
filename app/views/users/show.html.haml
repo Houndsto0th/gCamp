@@ -9,8 +9,13 @@
   %p
     %b Last Name:
     = @user.last_name
-  %p
-    %b Email
-    %a(href= "mailto:#")=@user.email
+  -if @user.id == current_user.id || current_user.admin
+    %p
+      %b Email
+      %a(href= "mailto:#")=@user.email
+    %p
+      %b Pivotal Tracker Token
+      -if @user.pivot_token?
+        = @user.pivot_token
 
-  = link_to "Edit", edit_user_path(@user), class: "btn btn-primary"
+    = link_to "Edit", edit_user_path(@user), class: "btn btn-primary"

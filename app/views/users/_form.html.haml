@@ -27,6 +27,11 @@
       .col-sm-3
         =f.password_field :password_confirmation, class: "col-sm-2 form-control"
 
+  .form-group
+    =f.label :pivot_token, class: "col-sm-2 control-label"
+    .col-sm-3
+      =f.text_field :pivot_token, class: "form-control"
+
   -if current_user.admin
     .form-group
       .col-sm-2.col-sm-offset-2

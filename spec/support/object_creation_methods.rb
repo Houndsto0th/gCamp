@@ -23,7 +23,7 @@ def create_membership(options = {})
   project = options[:project] || create_project
   user = options[:user] || create_user
   Membership.create!(
-    role: "Member",
+    role: "owner",
     project_id: project.id,
     user_id: user.id,)
 end

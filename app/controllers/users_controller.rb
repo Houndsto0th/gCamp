@@ -14,12 +14,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    if current_user.admin?
-      user_params = admin_params
-    else
-      user_params = user_params
-    end
-    @user = User.new(user_params)
+    accepted_params = current_user.admin? ? admin_params : user_params
+    @user = User.new(accepted_params)
     if @user.save
       redirect_to users_path, notice: "User Saved: Success!"
     else
@@ -38,12 +34,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.admin?
-      user_params = admin_params
-    else
-      user_params = user_params
-    end
-    if @user.update(user_params)
+    accepted_params = current_user.admin? ? admin_params : user_params
+    if @user.update(accepted_params)
       redirect_to users_path, notice: "User Update: Success!"
     else
       render :edit
@@ -62,7 +54,7 @@ class UsersController < ApplicationController
 
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :pivot_token)
     end
 
 end

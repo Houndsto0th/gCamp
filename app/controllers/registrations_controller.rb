@@ -1,4 +1,4 @@
-class RegistrationsController < ApplicationController
+class RegistrationsController < PublicController
   skip_before_action :ensure_logged_in
 
   def new
@@ -11,7 +11,8 @@ class RegistrationsController < ApplicationController
                       :last_name,
                       :email,
                       :password,
-                      :password_confirmation))
+                      :password_confirmation,
+                      :pivot_token,))
     if @user.save
       session[:user_id] = @user.id
       redirect_to new_project_path

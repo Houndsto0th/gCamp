@@ -21,5 +21,11 @@
     .form-group
       = f.label :password_confirmation
       = f.password_field :password_confirmation, class: "form-control"
+
+    .form-group
+      =f.label :pivot_token
+      =f.text_field :pivot_token, class: "form-control"
+
+
     .form-group
       = f.submit "Sign up", class: "btn btn-primary"
