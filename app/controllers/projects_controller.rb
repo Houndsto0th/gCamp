@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_member, only: [:index]
-  before_action :authorize_owner
+  before_action :authorize_owner, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_member
 
   def index
-    if current_user.admin
+    if current_user.admin?
       @projects = Project.all
     else
       @projects = current_user.projects

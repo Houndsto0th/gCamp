@@ -21,12 +21,13 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_owner
-    current_user.member?(@project)
-  end 
+    current_user.owner?(@project)
+  end
 
   def check_for_auth
     raise AccessDenied unless current_user.member?(@project)
   end
+
 
   def denied
     render "public/404", status: 404, layout: false

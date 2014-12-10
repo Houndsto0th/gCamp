@@ -38,6 +38,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    if current_user.admin?
+      user_params = admin_params
+    else
+      user_params = user_params
+    end
     if @user.update(user_params)
       redirect_to users_path, notice: "User Update: Success!"
     else

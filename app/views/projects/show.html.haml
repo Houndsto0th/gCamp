@@ -1,8 +1,9 @@
 %h2
   = @project.proj_name
-  .pull-right
-    = link_to "Edit", edit_project_path, class: "btn btn-primary"
-    = link_to "Delete", @project, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"
+  -if current_user.owner?(@project)
+    .pull-right
+      = link_to "Edit", edit_project_path, class: "btn btn-primary"
+      = link_to "Delete", @project, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"
 %ol.breadcrumb
   %li
     %a{:href => projects_path}Projects

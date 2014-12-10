@@ -6,8 +6,12 @@ class Project < ActiveRecord::Base
 
   validates :proj_name, presence: true
 
+  def owner?(project)
+    admin? || memberships.where(project_id: project.id, role:"Owner").present?
+  end
+
   def member?(project)
     projects.include?(project)
   end
-  
+
 end
