@@ -36,9 +36,12 @@ class MembershipsController < ApplicationController
 
   def destroy
     @membership = @project.memberships.find(params[:id])
-    @membership.destroy
-    redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was removed successfully"
-
+    if last_member?
+      redirect_to project_memberships_path(@project), notice: "You can't remove the last member of a project"
+    else
+      @membership.destroy
+      redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was removed successfully"
+    end
   end
 
 
@@ -46,6 +49,10 @@ class MembershipsController < ApplicationController
 
     def membership_params
       params.require(:membership).permit(:role, :user_id, :project_id)
+    end
+
+    def last_member?
+      @project.memberships.count == 1
     end
 
 

@@ -32,7 +32,6 @@ describe Task do
     end
 
     task.valid?
-    p task.errors
     expect(task.errors[:due_date].present?).to eq(false)
     task.due_date = "1/1/2000"
     task.valid?
