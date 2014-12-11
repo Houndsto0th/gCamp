@@ -1,3 +1,9 @@
+def destruction
+    User.delete_all
+    Project.delete_all
+    Task.delete_all
+    Membership.delete_all
+end
 
 def create_project
     Project.create!(proj_name: "#{Faker::Hacker.ingverb.humanize} #{Faker::Hacker.noun.humanize}")

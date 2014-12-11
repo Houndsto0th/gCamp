@@ -3,9 +3,7 @@ require 'rails_helper'
 feature 'Comments' do
 
   before do
-    User.delete_all
-    Project.delete_all
-    Task.delete_all
+    destruction
   end
 
   scenario "Visitor can't view comments" do
