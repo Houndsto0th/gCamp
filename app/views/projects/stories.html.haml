@@ -1,0 +1,27 @@
+.page-header
+  .h1
+    Pivotal Tracker Projects
+%table.table.table-bordered.table-striped
+  %tr
+    %th.h5
+      Story
+    %th.h5
+      Estimate
+    %th.h5
+      Labels
+    %th.h5
+      Current State
+  -@tracker_stories.each do |story|
+    %tr
+      %td
+        =story[:name]
+      %td
+        =story[:estimate]
+      %td
+        -@labels = []
+        -story[:labels].each do |label|
+          -@labels << label[:name]
+        =@labels.join(',')
+
+      %td
+        =story[:current_state]

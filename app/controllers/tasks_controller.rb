@@ -6,10 +6,6 @@ class TasksController < ApplicationController
   before_action :authorize_member
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
 
-  # before_action :check_for_auth
-
-  # GET /tasks
-  # GET /tasks.json
   def index
     if params[:show_complete]
       @tasks = @project.tasks.order(params[:sort_by]).page(params[:page]).per(5).all
@@ -19,51 +15,33 @@ class TasksController < ApplicationController
 
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.json
   def show
     @comments = @task.comments.all.where(params[:task_id])
     @comment = @task.comments.new
   end
 
-  # GET /tasks/new
   def new
     @task = @project.tasks.new
   end
 
-  # GET /tasks/1/edit
   def edit
 
   end
 
-
-  # POST /tasks
-  # POST /tasks.json
   def create
     @task = @project.tasks.new(task_params)
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save
+      redirect_to project_tasks_path(@project), notice: 'Task was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to project_task_path(@project, @task), notice: 'Task was successfully updated.'}
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.update(task_params)
+      redirect_to project_task_path(@project, @task), notice: 'Task was successfully updated.'
+    else
+      render :edit
     end
   end
 

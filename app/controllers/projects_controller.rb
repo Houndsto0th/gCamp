@@ -9,6 +9,14 @@ class ProjectsController < ApplicationController
     else
       @projects = current_user.projects
     end
+    tracker_api = TrackerAPI.new
+    @tracker_projects = tracker_api.projects(current_user.pivot_token)
+  end
+
+  def stories
+   @tracker_stories = TrackerAPI.new.stories(params[:tracker_id], current_user.pivot_token)
+   @projectname = TrackerAPI.new.projects(current_user.pivot_token)
+   Kaminari.paginate_array(@tracker_stories).page(params[:page])
   end
 
   def show

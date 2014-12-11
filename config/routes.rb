@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :memberships
   end
 
+  get "tracker_projects/:tracker_id" => "projects#stories", as: :tracker_projects
+
   root "pages#index"
   get "about" => "pages#about", as: :about
   get "terms" => "pages#terms", as: :terms

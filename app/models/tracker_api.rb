@@ -1,9 +1,10 @@
-class PivotalTracker
+class TrackerAPI
   def initialize
     @conn = Faraday.new(:url => 'https://www.pivotaltracker.com')
   end
 
   def projects(token)
+    return [] if token.nil?
     response = @conn.get do |req|
       req.url "/services/v5/projects"
       req.headers['Content-Type'] = 'application/json'
@@ -13,12 +14,12 @@ class PivotalTracker
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def stories(token, project)
+  def stories(project, token)
     response = @conn.get do |req|
-      req.url "/services/v5/project/#{project.id}/stories"
+      req.url "/services/v5/projects/#{project}/stories?limit=500"
       req.headers['Content-Type'] = 'application/json'
       req.headers['X-TrackerToken'] = token
     end
-      JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body, symbolize_names: true)
   end
 end
