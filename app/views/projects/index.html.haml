@@ -1,3 +1,4 @@
+
 .h1
   Projects
   = link_to "New Project", new_project_path, class: "btn btn-primary pull-right"
@@ -28,4 +29,4 @@
     - @tracker_projects.each do |tproject|
       %tr
         %td
-          = link_to "#{tproject[:name]}", tracker_projects_path(tracker_id: tproject[:id])
+          = link_to "#{tproject.name}", tracker_projects_path(tracker_id: tproject.id)

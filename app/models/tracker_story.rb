@@ -1,0 +1,3 @@
+class TrackerStory
+  
+end
