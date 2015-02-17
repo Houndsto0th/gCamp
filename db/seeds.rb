@@ -62,7 +62,7 @@ project: multiple_owners,
 due_date: 5.days.from_now
 )
 
-3.times do
+15.times do
   Comment.create!(
   task: task1,
   user: owner,
